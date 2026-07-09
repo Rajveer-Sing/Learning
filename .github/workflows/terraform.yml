@@ -1,0 +1,46 @@
+# Workflow terraform.yml
+name: Terraform
+
+# Events that trigger the workflow
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+      #   Jobs define the steps of the workflow
+
+jobs:
+  terraform_build-end-test:
+    name: Terraform Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Runner a well-known action
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.0
+         
+      - name: Step 1 - Check Terraform Format
+        run: terraform fmt -check
+
+      - name: Step 2 - Terraform Init
+        run: terraform init
+
+      - name: Step 3 - Terraform Validate
+        run: terraform validate
+
+      - name: Step 4 - Terraform Plan (Dry Run)
+        run: terraform plan
+
+        

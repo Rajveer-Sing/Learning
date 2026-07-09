@@ -1,0 +1,13 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files (ये भी सुरक्षित रखने के लिए पुश नहीं करने चाहिए)
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# PowerShell/Windows specific
+.history/
