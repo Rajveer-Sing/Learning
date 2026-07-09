@@ -34,7 +34,8 @@ jobs:
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.6.0
+          terraform_version: 1.9.0
+          terraform_wrapper: false
          
       - name: Step 1 - Check Terraform Format
         run: terraform fmt -check
