@@ -17,6 +17,11 @@ jobs:
   terraform_build-end-test:
     name: Terraform Build and Test
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./environment/dev
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
